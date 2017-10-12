@@ -5,7 +5,7 @@ app.get('/', function (req, res) {
 
     res.json(
         {
-            "ipaddress": req.ip,
+            "ipaddress": req.connection.remoteAddress || request.get("x-forwarded-for"),
             "language": req.get("accept-language").split(',')[0],
             "software": req.get("user-agent").split('(')[1].split(')')[0]
         }
